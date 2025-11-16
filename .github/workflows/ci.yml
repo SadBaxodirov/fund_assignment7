@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - '**' # optional: run on all branches
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check code
+        uses: actions/checkout@v4
+
+      - name: Setting up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Installing dependencies
+        run: npm install
+
+      - name: Running ESLint
+        run: npm run lint
+
+      - name: Running Tests
+        run: npm test -- --ci --watchAll=false

@@ -1,7 +1,8 @@
 {
   "scripts": {
     "start": "ts-node src/server.ts",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@types/cors": "^2.8.19",
